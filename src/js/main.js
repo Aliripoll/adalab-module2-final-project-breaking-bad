@@ -9,6 +9,7 @@ const input = document.querySelector('.js_input');
 // VARIABLES GLOBALES -> CON DATOS DE LA APP: personajes
 let data = []; //listado del fetch
 let favourite = []; //listado de personajes favoritos
+const baseUrl = 'https://breakingbadapi.com/api/characters';
 
 // FUNCIONES
 
@@ -24,13 +25,16 @@ function renderCharacters() {
   charactersList.innerHTML = html;
 }
 
-fetch('https://breakingbadapi.com/api/characters')
+function getCharacters(url) {
+  fetch(url)
   .then((response) => response.json())
   .then(characters => {
     data = characters;
 
     renderCharacters();
   });
+}
+getCharacters(baseUrl);
 
 
 
@@ -40,11 +44,14 @@ fetch('https://breakingbadapi.com/api/characters')
 searchBtn.addEventListener('click', (event) => {
     event.preventDefault();
     let name = input.value;
-    fetch(`https://breakingbadapi.com/api/characters?name=${name}`)
+    let url = `https://breakingbadapi.com/api/characters?name=${name}`;
+    getCharacters(url);
+    /* fetch(`https://breakingbadapi.com/api/characters?name=${name}`)
     .then((response) => response.json())
     .then(characters => {
       data = characters;
   
       renderCharacters();
-    });
+    }); */
+    renderCharacters();
 });
