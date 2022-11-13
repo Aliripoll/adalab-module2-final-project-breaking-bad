@@ -3,7 +3,8 @@
 // QUERYSELECTOR
 
 const charactersList = document.querySelector('.js_characters');
-
+const searchBtn = document.querySelector('.js_btn');
+const input = document.querySelector('.js_input');
 
 // VARIABLES GLOBALES -> CON DATOS DE LA APP: personajes
 let data = []; //listado del fetch
@@ -32,4 +33,18 @@ fetch('https://breakingbadapi.com/api/characters')
   });
 
 
+
+
 // EVENTOS
+
+searchBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    let name = input.value;
+    fetch(`https://breakingbadapi.com/api/characters?name=${name}`)
+    .then((response) => response.json())
+    .then(characters => {
+      data = characters;
+  
+      renderCharacters();
+    });
+});
