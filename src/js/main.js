@@ -115,4 +115,3 @@ if(savedFavorites !== null) {
 }
 
 //BONUS FAVORITO RESALTADO
-
