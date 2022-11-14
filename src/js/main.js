@@ -5,6 +5,7 @@
 const charactersList = document.querySelector('.js_characters');
 const searchBtn = document.querySelector('.js_btn');
 const input = document.querySelector('.js_input');
+const favoritesList = document.querySelector('.js_favorites');
 
 // VARIABLES GLOBALES -> CON DATOS DE LA APP: personajes
 let charactersDataList = []; //listado de personajes
@@ -13,6 +14,7 @@ const baseUrl = 'https://breakingbadapi.com/api/characters';
 
 // FUNCIONES
 
+//Función que pinta las tarjetas de "characters"// 
 function renderCharacters() {
   let html = "";
     for (const character of charactersDataList) {
@@ -49,7 +51,23 @@ function addFavorites() {
 function handleClickFavorites(event) {
   event.currentTarget.classList.toggle('selected');
   const selectedCharacter = charactersDataList.find((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id);
+
+  favoriteDataList.push(selectedCharacter);
+  renderFavorites();
+  /////////////mirar!!
 }
+
+function renderFavorites() {
+  let html = "";
+  for (const favorite of favoriteDataList) {
+    html += `<article class="article_card js_article" id="${favorite.char_id}">`;
+    html += `<img class="img" src="${favorite.img}"></>`; 
+    html += `<p class="name"> ${favorite.name}</p>`; 
+    html += `<p class="status"> ${favorite.status}</p>`; 
+    html += `</article>`;
+  }
+  favoritesList.innerHTML = html;
+} 
 
 
 // EVENTOS
@@ -67,5 +85,6 @@ searchBtn.addEventListener('click', (event) => {
       renderCharacters();
     }); */
     renderCharacters();
+
 });
 
