@@ -55,9 +55,6 @@ function handleClickFavorites(event) {
 
   const selectedFavoriteIndex = favoriteDataList.findIndex((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id)
 
-  /* const selectedFavorite = favoriteDataList.find((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id) */;
-  
-
 //(selectedFavorite)
   if (selectedFavoriteIndex === -1) {
   favoriteDataList.push(selectedCharacter);
@@ -69,7 +66,7 @@ function handleClickFavorites(event) {
 
     localStorage.setItem('favoriteCharacter', JSON.stringify(favoriteDataList));
   }
-  
+
   renderFavorites();
   
 }
@@ -113,6 +110,9 @@ console.log(savedFavorites);
 
 //Importante siempre que hagamos un getItem hagamos un if, para comprobar si hay algo en el localStorage o no
 if(savedFavorites !== null) {
-favoriteDataList = savedFavorites;
-renderFavorites();
+    favoriteDataList = savedFavorites;
+    renderFavorites();
 }
+
+//BONUS FAVORITO RESALTADO
+
