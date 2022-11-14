@@ -16,10 +16,10 @@ const baseUrl = 'https://breakingbadapi.com/api/characters';
 function renderCharacters() {
   let html = "";
     for (const character of data) {
-        html += `<article class="card">`;
+        html += `<article class="article_card">`;
         html += `<img class="img" src="${character.img}"></>`; 
         html += `<p class="name"> ${character.name}</p>`; 
-        html += `<p> ${character.status}</p>`; 
+        html += `<p class="status"> ${character.status}</p>`; 
         html += `</article>`;
     }
   charactersList.innerHTML = html;
