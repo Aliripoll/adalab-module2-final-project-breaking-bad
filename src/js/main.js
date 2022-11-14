@@ -53,12 +53,23 @@ function handleClickFavorites(event) {
 
   const selectedCharacter = charactersDataList.find((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id);
 
-  const selectedFavorite = favoriteDataList.find((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id);
-  console.log(selectedFavorite);
+  const selectedFavoriteIndex = favoriteDataList.findIndex((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id)
 
-  if (selectedFavorite === undefined) {
+  /* const selectedFavorite = favoriteDataList.find((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id) */;
+  
+
+//(selectedFavorite)
+  if (selectedFavoriteIndex === -1) {
   favoriteDataList.push(selectedCharacter);
+
+//Utilizamos el JSON stringify para transformar la variable a texto
+  localStorage.setItem('favoriteCharacter', JSON.stringify(favoriteDataList));
+  } else { //si ya está en favoritos
+    favoriteDataList.splice(selectedFavoriteIndex, 1);
+
+    localStorage.setItem('favoriteCharacter', JSON.stringify(favoriteDataList));
   }
+  
   renderFavorites();
   
 }
@@ -94,3 +105,14 @@ searchBtn.addEventListener('click', (event) => {
 
 });
 
+// CÓDIGO QUE SE EJECUTA AL CARGAR LA PÁGINA
+
+//Utilizamos el JSON.parse para cambiar de texto a objeto 
+const savedFavorites = JSON.parse(localStorage.getItem('favoriteCharacter'));
+console.log(savedFavorites);
+
+//Importante siempre que hagamos un getItem hagamos un if, para comprobar si hay algo en el localStorage o no
+if(savedFavorites !== null) {
+favoriteDataList = savedFavorites;
+renderFavorites();
+}
