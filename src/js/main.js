@@ -50,11 +50,17 @@ function addFavorites() {
 
 function handleClickFavorites(event) {
   event.currentTarget.classList.toggle('selected');
+
   const selectedCharacter = charactersDataList.find((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id);
 
+  const selectedFavorite = favoriteDataList.find((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id);
+  console.log(selectedFavorite);
+
+  if (selectedFavorite === undefined) {
   favoriteDataList.push(selectedCharacter);
+  }
   renderFavorites();
-  /////////////mirar!!
+  
 }
 
 function renderFavorites() {
