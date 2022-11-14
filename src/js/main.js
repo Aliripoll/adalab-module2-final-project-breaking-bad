@@ -16,7 +16,7 @@ const baseUrl = 'https://breakingbadapi.com/api/characters';
 function renderCharacters() {
   let html = "";
     for (const character of charactersDataList) {
-        html += `<article class="article_card js_article">`;
+        html += `<article class="article_card js_article" id="${character.char_id}">`;
         html += `<img class="img" src="${character.img}"></>`; 
         html += `<p class="name"> ${character.name}</p>`; 
         html += `<p class="status"> ${character.status}</p>`; 
@@ -48,7 +48,7 @@ function addFavorites() {
 
 function handleClickFavorites(event) {
   event.currentTarget.classList.toggle('selected');
- 
+  const selectedCharacter = charactersDataList.find((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id);
 }
 
 
