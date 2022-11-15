@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
-  margin-bottom: 45px;
+  margin: 0 40px 40px 0;
 }
 
 .section {
@@ -19,7 +19,7 @@
   margin-top: 20px;
   margin-right: 35px;
   display: flex;
-  width: 80%;
+  //width: 100%;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-end;
@@ -35,7 +35,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-basis: 21%;
+  flex-basis: 200px;
   gap: 15px;
   padding: 10px 0 10px 0;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -60,7 +60,7 @@
 
 .js_favorites {
   display: flex;
-  width: 200%;
+  width: 200px;
   gap: 20px;
   flex-direction: column;
 }
