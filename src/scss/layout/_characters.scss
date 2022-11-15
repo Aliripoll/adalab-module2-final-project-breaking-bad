@@ -13,14 +13,13 @@
 
 .first_title {
   text-align: center;
-  padding-left: 100px;
 }
 
 .js_characters {
   margin-top: 20px;
   margin-right: 35px;
   display: flex;
-  width: 65vw;
+  width: 80%;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-end;
@@ -36,7 +35,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-basis: 30%;
+  flex-basis: 21%;
   gap: 15px;
   padding: 10px 0 10px 0;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -44,8 +43,8 @@
 
 .img {
   object-fit: cover;
-  width: 60%;
-  height: 90%;
+  max-width: 60%;
+  height: 70%;
 }
 .status {
   gap: 20px;
@@ -56,13 +55,15 @@
 ///////////////////////
 
 .second_section {
-  width: 23vw;
-  padding: 0 0 20px 30px;
-  gap: 40px;
+  margin-left: 100px;
 }
-/* .js_favorites {
-  margin-bottom: 20px;
-} */
+
+.js_favorites {
+  display: flex;
+  width: 200%;
+  gap: 20px;
+  flex-direction: column;
+}
 
 .second_title {
   padding-bottom: 20px;
@@ -87,4 +88,5 @@
   width: 90px;
   background-color: rgb(225, 158, 33);
   border-radius: 5px;
+  margin-top: 25px;
 }

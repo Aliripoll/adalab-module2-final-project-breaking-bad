@@ -35,6 +35,7 @@ function renderCharacters() {
   addFavorites();
 }
 
+//Función que mete personajes desde la Api 
 function getCharacters(url) {
   fetch(url)
   .then((response) => response.json())
@@ -44,8 +45,8 @@ function getCharacters(url) {
     renderCharacters();
   });
 }
+//se ejecuta al cargar la página para meter personajes
 getCharacters(baseUrl);
-
 
 
 function addFavorites() {
@@ -103,14 +104,13 @@ searchBtn.addEventListener('click', (event) => {
 
 deleteBtn.addEventListener('click', (event) => {
   favoritesList.innerHTML = "";
-
+  localStorage.removeItem('favoriteCharacter');
 });
 
 // CÓDIGO QUE SE EJECUTA AL CARGAR LA PÁGINA
 
 //Utilizamos el JSON.parse para cambiar de texto a objeto 
 const savedFavorites = JSON.parse(localStorage.getItem('favoriteCharacter'));
-console.log(savedFavorites);
 
 //Importante siempre que hagamos un getItem hagamos un if, para comprobar si hay algo en el localStorage o no
 if(savedFavorites !== null) {
