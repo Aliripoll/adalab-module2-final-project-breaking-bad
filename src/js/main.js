@@ -67,8 +67,7 @@ function handleClickFavorites(event) {
     localStorage.setItem('favoriteCharacter', JSON.stringify(favoriteDataList));
   }
 
-  renderFavorites();
-  
+  renderFavorites(); 
 }
 
 function renderFavorites() {
@@ -86,20 +85,13 @@ function renderFavorites() {
 
 // EVENTOS
 
+//cuando hago click en el botón de buscar, trae de la Api la info
 searchBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    let name = input.value;
+    let name = input.value.toLowerCase();
     let url = `https://breakingbadapi.com/api/characters?name=${name}`;
     getCharacters(url);
-    /* fetch(`https://breakingbadapi.com/api/characters?name=${name}`)
-    .then((response) => response.json())
-    .then(characters => {
-      characterDataList = characters;
-  
-      renderCharacters();
-    }); */
     renderCharacters();
-
 });
 
 // CÓDIGO QUE SE EJECUTA AL CARGAR LA PÁGINA
@@ -114,4 +106,4 @@ if(savedFavorites !== null) {
     renderFavorites();
 }
 
-//BONUS FAVORITO RESALTADO
+// BONUS FAVORITO RESALTADO
