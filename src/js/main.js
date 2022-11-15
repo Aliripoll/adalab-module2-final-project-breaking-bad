@@ -6,6 +6,7 @@ const charactersList = document.querySelector('.js_characters');
 const searchBtn = document.querySelector('.js_btn');
 const input = document.querySelector('.js_input');
 const favoritesList = document.querySelector('.js_favorites');
+const deleteBtn = document.querySelector('.js_deleteBtn');
 
 // VARIABLES GLOBALES -> CON DATOS DE LA APP: personajes
 let charactersDataList = []; //listado de personajes
@@ -100,6 +101,11 @@ searchBtn.addEventListener('click', (event) => {
     renderCharacters();
 });
 
+deleteBtn.addEventListener('click', (event) => {
+  favoritesList.innerHTML = "";
+
+});
+
 // CÓDIGO QUE SE EJECUTA AL CARGAR LA PÁGINA
 
 //Utilizamos el JSON.parse para cambiar de texto a objeto 
@@ -112,4 +118,3 @@ if(savedFavorites !== null) {
     renderFavorites();
 }
 
-// BONUS FAVORITO RESALTADO
