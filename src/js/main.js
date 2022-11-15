@@ -34,7 +34,7 @@ function renderCharacters() {
   addFavorites();
 }
 
-//Función que mete personajes desde la Api con fetch
+//Función que mete personajes desde la Api con fetch//
 function getCharacters(url) {
   fetch(url)
   .then((response) => response.json())
@@ -44,10 +44,10 @@ function getCharacters(url) {
     renderCharacters();
   });
 }
-//se ejecuta al cargar la página para meter personajes
+//se ejecuta al cargar la página para meter personajes//
 getCharacters(baseUrl);
 
-//añade a cada tarjeta el evento click
+//añade a cada tarjeta el evento click//
 function addFavorites() {
   const favorites = document.querySelectorAll('.js_article');
   for (const eachFavorite of favorites) {
@@ -92,7 +92,7 @@ function renderFavorites() {
 
 // EVENTOS
 
-//cuando hago click en el botón de buscar, trae de la Api la info
+//cuando hago click en el botón de buscar, trae de la Api la info//
 searchBtn.addEventListener('click', (event) => {
     event.preventDefault();
     let name = input.value.toLowerCase();
@@ -107,7 +107,7 @@ deleteBtn.addEventListener('click', (event) => {
 });
 
 //LOCALSTORAGE
-//Utilizamos el JSON.parse para cambiar de texto a objeto 
+//Utilizamos el JSON.parse para cambiar de texto a objeto //
 const savedFavorites = JSON.parse(localStorage.getItem('favoriteCharacter'));
 
 //Importante siempre que hagamos un getItem hagamos un if, para comprobar si hay algo en el localStorage o no
