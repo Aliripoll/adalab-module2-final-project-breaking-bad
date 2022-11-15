@@ -18,11 +18,17 @@ const baseUrl = 'https://breakingbadapi.com/api/characters';
 function renderCharacters() {
   let html = "";
     for (const character of charactersDataList) {
-        html += `<article class="article_card js_article" id="${character.char_id}">`;
-        html += `<img class="img" src="${character.img}"></>`; 
-        html += `<p class="name"> ${character.name}</p>`; 
-        html += `<p class="status"> ${character.status}</p>`; 
-        html += `</article>`;
+      //En caso de encontrarlo en favoritos, encuentra su índice en el array de favoritos.
+      let indexFav = favoriteDataList.findIndex((favorite) => favorite.name === character.name);
+      let favoriteClass = "";
+      if (indexFav !== -1) {
+        favoriteClass = 'markCharacter';
+      }
+      html += `<article class="article_card js_article ${favoriteClass}" id="${character.char_id}">`;
+      html += `<img class="img" src="${character.img}"></>`; 
+      html += `<p class="name"> ${character.name}</p>`; 
+      html += `<p class="status"> ${character.status}</p>`; 
+      html += `</article>`;
     }
   charactersList.innerHTML = html;
   addFavorites();

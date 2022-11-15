@@ -1,10 +1,14 @@
 .footer {
-  background-color: rgba(214, 173, 28, 0.622);
-  height: 7vh;
+  background-color: rgba(134, 126, 98, 0.924);
+  border: 2px solid gray;
+  height: 6vh;
   display: flex;
   text-align: center;
   justify-content: center;
   padding-top: 12px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 .footer_text {
   font-size: 17px;
