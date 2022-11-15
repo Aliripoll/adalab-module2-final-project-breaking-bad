@@ -1,14 +1,13 @@
 'use strict';
 
 // QUERYSELECTOR
-
 const charactersList = document.querySelector('.js_characters');
 const searchBtn = document.querySelector('.js_btn');
 const input = document.querySelector('.js_input');
 const favoritesList = document.querySelector('.js_favorites');
 const deleteBtn = document.querySelector('.js_deleteBtn');
 
-// VARIABLES GLOBALES -> CON DATOS DE LA APP: personajes
+// VARIABLES GLOBALES
 let charactersDataList = []; //listado de personajes
 let favoriteDataList = []; //listado de personajes favoritos
 const baseUrl = 'https://breakingbadapi.com/api/characters';
@@ -35,7 +34,7 @@ function renderCharacters() {
   addFavorites();
 }
 
-//Función que mete personajes desde la Api 
+//Función que mete personajes desde la Api con fetch
 function getCharacters(url) {
   fetch(url)
   .then((response) => response.json())
@@ -48,12 +47,13 @@ function getCharacters(url) {
 //se ejecuta al cargar la página para meter personajes
 getCharacters(baseUrl);
 
-
+//añade a cada tarjeta el evento click
 function addFavorites() {
   const favorites = document.querySelectorAll('.js_article');
   for (const eachFavorite of favorites) {
     eachFavorite.addEventListener('click', handleClickFavorites);
   }
+ 
 }
 
 function handleClickFavorites(event) {
@@ -63,12 +63,11 @@ function handleClickFavorites(event) {
 
   const selectedFavoriteIndex = favoriteDataList.findIndex((eachCharacterObj) => eachCharacterObj.char_id == event.currentTarget.id)
 
-//(selectedFavorite)
   if (selectedFavoriteIndex === -1) {
-  favoriteDataList.push(selectedCharacter);
+    favoriteDataList.push(selectedCharacter);
 
-//Utilizamos el JSON stringify para transformar la variable a texto
-  localStorage.setItem('favoriteCharacter', JSON.stringify(favoriteDataList));
+    //Utilizamos el JSON stringify para transformar la variable a texto
+    localStorage.setItem('favoriteCharacter', JSON.stringify(favoriteDataList));
   } else { //si ya está en favoritos
     favoriteDataList.splice(selectedFavoriteIndex, 1);
 
@@ -77,7 +76,7 @@ function handleClickFavorites(event) {
 
   renderFavorites(); 
 }
-
+//pinta los favoritos
 function renderFavorites() {
   let html = "";
   for (const favorite of favoriteDataList) {
@@ -107,8 +106,7 @@ deleteBtn.addEventListener('click', (event) => {
   localStorage.removeItem('favoriteCharacter');
 });
 
-// CÓDIGO QUE SE EJECUTA AL CARGAR LA PÁGINA
-
+//LOCALSTORAGE
 //Utilizamos el JSON.parse para cambiar de texto a objeto 
 const savedFavorites = JSON.parse(localStorage.getItem('favoriteCharacter'));
 
