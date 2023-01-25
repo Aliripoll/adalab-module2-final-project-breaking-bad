@@ -74,7 +74,7 @@ function handleClickFavorites(event) {
   if (selectedFavoriteIndex === -1) {
     favoriteDataList.push(selectedCharacter);
 
-    //Utilizamos el JSON stringify para transformar la variable a texto
+   /////Utilizamos el JSON stringify para transformar la variable a texto/////
     localStorage.setItem('favoriteCharacter', JSON.stringify(favoriteDataList));
   } else { //si ya está en favoritos
     favoriteDataList.splice(selectedFavoriteIndex, 1);
@@ -114,7 +114,7 @@ deleteBtn.addEventListener('click', (event) => {
 });
 
 //LOCALSTORAGE
-//Utilizamos el JSON.parse para cambiar de texto a objeto //
+//Utilizamos el JSON.parse para cambiar de texto a objeto // ///////////////////////////
 const savedFavorites = JSON.parse(localStorage.getItem('favoriteCharacter'));
 
 //Importante siempre que hagamos un getItem hagamos un if, para comprobar si hay algo en el localStorage o no
