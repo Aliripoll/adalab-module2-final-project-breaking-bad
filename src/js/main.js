@@ -10,7 +10,7 @@ const deleteBtn = document.querySelector('.js_deleteBtn');
 // VARIABLES GLOBALES
 let charactersDataList = []; //listado de personajes
 let favoriteDataList = []; //listado de personajes favoritos
-const baseUrl = 'https://breakingbadapi.com/api/characters';
+const baseUrl = './assets/data/characters.json';
 
 // FUNCIONES
 
@@ -28,6 +28,9 @@ function renderCharacters() {
       html += `<img class="img" src="${character.img}"></>`; 
       html += `<p class="name"> ${character.name}</p>`; 
       html += `<p class="status"> ${character.status}</p>`; 
+      for (const occupation of character.occupation) {
+      html += `<p class="occupation"> ${occupation}</p>`;
+      }
       html += `</article>`;
     }
   charactersList.innerHTML = html;
@@ -35,12 +38,17 @@ function renderCharacters() {
 }
 
 //Función que mete personajes desde la Api con fetch//
-function getCharacters(url) {
+function getCharacters(url, name = "") { 
+  console.log("entro por getcharacters", name);
   fetch(url)
   .then((response) => response.json())
   .then(data => {
-    charactersDataList = data;
-
+    if (name != "") {
+      charactersDataList = data.filter(character => character.name.toLowerCase().includes(name));
+    } else{
+      charactersDataList = data;
+    }
+   
     renderCharacters();
   });
 }
@@ -72,8 +80,8 @@ function handleClickFavorites(event) {
     favoriteDataList.splice(selectedFavoriteIndex, 1);
 
     localStorage.setItem('favoriteCharacter', JSON.stringify(favoriteDataList));
-  }
-
+  } 
+  console.log(selectedCharacter.name);
   renderFavorites(); 
 }
 //pinta los favoritos
@@ -96,8 +104,7 @@ function renderFavorites() {
 searchBtn.addEventListener('click', (event) => {
     event.preventDefault();
     let name = input.value.toLowerCase();
-    let url = `https://breakingbadapi.com/api/characters?name=${name}`;
-    getCharacters(url);
+    getCharacters(baseUrl, name);
     renderCharacters();
 });
 
