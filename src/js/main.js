@@ -55,7 +55,7 @@ function getCharacters(url, name = "") {
 //se ejecuta al cargar la página para meter personajes//
 getCharacters(baseUrl);
 
-//añade a cada tarjeta el evento click//
+//añade a cada tarjeta el evento click//////////
 function addFavorites() {
   const favorites = document.querySelectorAll('.js_article');
   for (const eachFavorite of favorites) {
